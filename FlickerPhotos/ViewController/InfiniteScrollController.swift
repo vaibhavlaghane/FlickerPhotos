@@ -20,13 +20,13 @@ extension PhotoScrollViewController{
                 self.addLoadingIndicator()
             }
         }
-        print("scrollViewDidEndDecelerating")
+       // print("scrollViewDidEndDecelerating")
     }
     
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
             self.scrollReachedBottom = true
-            print("Reached Bottom ")
+            //print("Reached Bottom ")
         }
         if (scrollView.contentOffset.y <= 0){
         }
@@ -35,15 +35,15 @@ extension PhotoScrollViewController{
     }
     
      func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        print("scrollViewDidChangeAdjustedContentInset")
+        //print("scrollViewDidChangeAdjustedContentInset")
     }
     
      func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-          print("scrollViewDidEndDragging")
+      //    print("scrollViewDidEndDragging")
     }
     
      func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-          print("scrollViewDidEndScrollingAnimation")
+      //    print("scrollViewDidEndScrollingAnimation")
     }
     
     func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
