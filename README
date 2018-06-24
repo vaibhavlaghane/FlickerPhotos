@@ -1,0 +1,41 @@
+The Project FlickerPhotos is designed to search and download photos from the FlickerAPI.
+It follows the MVVM model where "PhotosViewModel" forms the main ViewModel class. It contains "PhotoScrollViewController"- the controller to load the view for the images, the searchbar and the loading indicator[when scrolled up to get data till i exhausts[ like inifinite data download ]].
+Notification mechanism is used to let the controller know that the image is downloaded.
+
+ViewModel  - PhotosViewModel
+- owns the controller and launches the controller and view
+- invokes NetworkOperationManager - and downloads data
+- it is also the delegate of"PhotoScrollViewController", for implementing action when the text is searched and image download is queried from the controller
+
+Controller - PhotoScrollViewController
+- contains 3 table  views for 3 scrollable columns
+- contains search bar to search image
+- when user scrolls all the way to bottom , the query is launched again to download more images for the current searched text
+- protocol PhotoSearchDelegate - defines the method to be implemented by the ViewModel when the text is searched in the searchbar
+
+Cell - PhotoTableViewCell - cell containing the image
+
+InfiniteScroll - InfiniteScrollController
+- extension of PhotoScrollViewController for catching the scroll events.
+- and call the searchText and download image task
+
+Utility - utility functions to parse json , alert view
+- Image Download check -if image is already downloaded "getImageFile" gets the file
+- download and store image file "storeFile"
+
+Photo - Model to store the photo details
+
+DataDownloader - download sessiontask for json data
+ImageDownloader - download operation for image
+
+NetworkOperationManager - invokes datadownloader for json data download
+- creates nsoperation queue for image download,
+- starts image download
+
+ToDo -
+- placeholder image/ animation effect when image is to be downloaded in the cell
+- processing the image to adjust height and width in the cell/ cell size can change according to resolution of the image
+- cacheManager - recycle the image folder - for deletion of old images, when image size grows to more than a limit
+- rearrange the cells[images] where the image download has failed[instead of showing them to the user ]
+
+

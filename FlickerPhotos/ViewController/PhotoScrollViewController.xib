@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoScrollViewController" customModule="FlickerPhotos" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="HbY-Zg-ECJ" id="I7c-jI-NXk"/>
+                <outlet property="table1" destination="E72-Lc-ZFt" id="agN-3u-wAY"/>
+                <outlet property="table2" destination="GOm-SY-3Ke" id="kOM-CZ-yJz"/>
+                <outlet property="table3" destination="pm4-Te-DC4" id="H71-Pv-OYg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3FP-Qz-h3r">
+                    <rect key="frame" x="5" y="104" width="365" height="562"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E72-Lc-ZFt">
+                            <rect key="frame" x="0.0" y="0.0" width="119" height="562"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="119" id="Zny-Sl-Ldf"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Xnf-Lf-Yeh"/>
+                                <outlet property="delegate" destination="-1" id="4ox-C8-Hcx"/>
+                            </connections>
+                        </tableView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GOm-SY-3Ke">
+                            <rect key="frame" x="119" y="0.0" width="127" height="562"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="119" id="2lp-5p-jw8"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="w6T-hw-d4B"/>
+                                <outlet property="delegate" destination="-1" id="BDu-be-zFD"/>
+                            </connections>
+                        </tableView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pm4-Te-DC4">
+                            <rect key="frame" x="246" y="0.0" width="119" height="562"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="119" id="nRZ-4M-NZ2"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Y8c-8Z-Xeg"/>
+                                <outlet property="delegate" destination="-1" id="efC-M3-u2s"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="GOm-SY-3Ke" firstAttribute="centerX" secondItem="3FP-Qz-h3r" secondAttribute="centerX" id="My6-NZ-dQT"/>
+                    </constraints>
+                </stackView>
+                <searchBar contentMode="redraw" text="" placeholder="search photos..." translatesAutoresizingMaskIntoConstraints="NO" id="HbY-Zg-ECJ">
+                    <rect key="frame" x="0.0" y="31" width="375" height="70"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="3Yy-uQ-eSN"/>
+                    </connections>
+                </searchBar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3FP-Qz-h3r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="0gw-BL-l4G"/>
+                <constraint firstItem="HbY-Zg-ECJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="JtS-EL-hqe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3FP-Qz-h3r" secondAttribute="trailing" constant="5" id="emW-Pr-Yhs"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3FP-Qz-h3r" secondAttribute="bottom" constant="1" id="iSN-Wg-fQo"/>
+                <constraint firstItem="HbY-Zg-ECJ" firstAttribute="centerX" secondItem="3FP-Qz-h3r" secondAttribute="centerX" id="j9D-VZ-sg4"/>
+                <constraint firstItem="3FP-Qz-h3r" firstAttribute="top" secondItem="HbY-Zg-ECJ" secondAttribute="bottom" constant="3" id="rhb-ia-AUq"/>
+                <constraint firstItem="3FP-Qz-h3r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="vp6-WF-spB"/>
+                <constraint firstItem="HbY-Zg-ECJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vvr-6a-tSi"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="68.5"/>
+        </view>
+    </objects>
+</document>
