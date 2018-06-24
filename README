@@ -1,16 +1,20 @@
 The Project FlickerPhotos is designed to search and download photos from the FlickerAPI.
-It follows the MVVM model where "PhotosViewModel" forms the main ViewModel class. It contains "PhotoScrollViewController"- the controller to load the view for the images, the searchbar and the loading indicator[when scrolled up to get data till it exhausts[ like inifinite data download ]].
+It downloads the images infinitely[ when user scrolls and reaches bottom, a new download call is made to get the images page by page - till the server data is available ]
 Notification mechanism is used to let the controller know that the image is downloaded.
+Image caching - is achieved by saving the file to filesystem. When new searh is made, if file is already present, the network call to download the file is not made, the file is retrieved from local store.
+
+It follows the MVVM model where "PhotosViewModel" forms the main ViewModel class. ViewModel contains "PhotoScrollViewController"
+as well as the NetworkOperations manager. the ViewModel is instantiated in the beginning which then handles the business logic between view controller and the other operations.
 
 ViewModel  - PhotosViewModel
 - owns the controller and launches the controller and view
 - invokes NetworkOperationManager - and downloads data
-- it is also the delegate of"PhotoScrollViewController", for implementing action when the text is searched and image download is queried from the controller
+- it also acts as the delegate of"PhotoScrollViewController", for implementing action when the text is searched and image download is queried from the controller
 
 Controller - PhotoScrollViewController
 - contains 3 table  views for 3 scrollable columns
 - contains search bar to search image
-- when user scrolls all the way to bottom , the query is launched again to download more images for the current searched text
+- [infinite download]when user scrolls all the way to bottom , the query is launched again to download more images for the current searched text
 - protocol PhotoSearchDelegate - defines the method to be implemented by the ViewModel when the text is searched in the searchbar
 
 PhotoTableViewCell - cell containing the image
@@ -19,15 +23,14 @@ InfiniteScroll - InfiniteScrollController
 - extension of PhotoScrollViewController for catching the scroll events.
 - and call the searchText and download image task
 
-Utility - utility functions to parse json , alert view
-- Image Download check -if image is already downloaded "getImageFile" gets the file
+Utility - utility functions to parse json , alert view, store/retrieve downloaded image file
 - download and store image file "storeFile"
+-  if image is already downloaded "getImageFile" gets the file
 
 Photo - Model to store the photo details
 
 DataDownloader - download sessiontask for json data
 ImageDownloader - download operation for image
-
 NetworkOperationManager - invokes datadownloader for json data download
 - creates nsoperation queue for image download,
 - starts image download
