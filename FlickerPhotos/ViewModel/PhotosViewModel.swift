@@ -10,6 +10,7 @@ import UIKit
 
 let photoControllerXib = "PhotoScrollViewController"
 let receivedImageNotification = "ReceivedImageNotification"
+let failedImageNotification = "failedImageNotification"
 let receivedImageSelector = "receivedImage:"
 
 class PhotosViewModel: NSObject, PhotoSearchDelegate {

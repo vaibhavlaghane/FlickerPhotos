@@ -27,6 +27,10 @@ class ImageDownloader: Operation {
             if(imageData != nil ){
                 if let id =  self.photo.id , let image = imageData {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: receivedImageNotification), object: nil, userInfo: ["image":image  as Any   , "id":  id as String   ])
+                }else{
+                    if let id =  self.photo.id {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: failedImageNotification), object: nil, userInfo: ["id":  id as String   ])
+                    }
                 }
             }
         }else{

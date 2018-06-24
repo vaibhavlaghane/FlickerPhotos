@@ -31,6 +31,11 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     internal var table1photos = [Photo]()
     internal var table2photos = [Photo]()
     internal var table3photos = [Photo]()
+    
+    internal var table1photosNoImages = [Photo]()
+    internal var table2photosNoImages = [Photo]()
+    internal var table3photosNoImages = [Photo]()
+    
     internal weak var delegate: PhotosViewModel? = nil
     internal var activtyInd = UIActivityIndicatorView()
     internal var currSearch = SearchProgress.none
@@ -46,6 +51,9 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
         self.table2.register(nibCell, forCellReuseIdentifier: cellIdentifier)
         self.table3.register(nibCell, forCellReuseIdentifier: cellIdentifier)
         NotificationCenter.default.addObserver(self, selector: #selector(receivedImage(notification:)), name: NSNotification.Name(rawValue:receivedImageNotification) , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(failedImage(notification:)), name: NSNotification.Name(rawValue:failedImageNotification) , object: nil)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,34 +85,44 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
             if(tableView == table1){
                 let photo = table1photos[indexPath.row]
                 cell.textLabel?.text = nil 
-                cell.imageView?.image = nil
+                cell.imageV?.image = photo.imageData
                 if let image = photo.imageData{
-                cell.imageView?.image = image
+                    print(indexPath.row ," image is present ")
+                    cell.imageV?.image = image
                 }else{
                     cell.textLabel?.text = photo.title
-                    cell.imageView?.image = nil
+                    print(indexPath.row ,   "  image is  NOT present ")
+                    //cell.imageV?.image = nil
                 }
             }
             if(tableView == table2){
                 let photo = table2photos[indexPath.row]
                 cell.textLabel?.text = nil
-                cell.imageView?.image = nil
+                cell.imageV?.image = photo.imageData
                 if let image = photo.imageData{
-                    cell.imageView?.image = image
+                    print(indexPath.row ,   "  image is  present ")
+                   cell.imageV?.image = image
                 }else{
                     cell.textLabel?.text = photo.title
-                    cell.imageView?.image = nil
+                    print(indexPath.row ,   "  image is NOT  present ")
+                    //cell.imageV?.image = nil
                 }
             }
             if(tableView == table3){
                 let photo = table3photos[indexPath.row]
                 cell.textLabel?.text = nil
-                cell.imageView?.image = nil
+                cell.imageV?.image = photo.imageData
                 if let image = photo.imageData{
-                    cell.imageView?.image = image
+                    print(indexPath.row  ,   " image is  present ")
+                    cell.imageV?.image = image
                 }else{
                     cell.textLabel?.text = photo.title
-                    cell.imageView?.image = nil
+                    print(indexPath.row  ,  " image  is NOT  present ")
+                    if let id = photo.id {
+                        if  let image = Utility.getImageFile(id){
+                            cell.imageV?.image = image
+                        }
+                    }
                 }
             }
             return cell
@@ -114,14 +132,19 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    internal func updateImage( _ id: String ){
+    internal func updateImage( _ id: String , _ downloadFailed: Bool  ){
         if (self.table1photos.count != 0 ){
             for (i, element ) in self.table1photos.enumerated(){
                 if( element.id == id ){
                     DispatchQueue.main.async {
                         if (self.table1 != nil){
                             let indexPath =  IndexPath(row: i, section: 0)
+                            if(downloadFailed){
+                                self.table1photos.remove(at: i )
+                                self.table1.reloadData()
+                            }else{
                             self.table1.reloadRows(at: [indexPath], with: .top)
+                            }
                         }
                     }
                 return
@@ -159,7 +182,7 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     internal func appendData(_ d1: [Photo], _ d2: [Photo], _ d3: [Photo], _ isNewText: Bool ){
         self.currSearch = .none
         removeLoadingIndicator()
-        
+        if (d1.count == 0 && d2.count == 0 && d3.count == 0){return}
         if(isNewText){
             DispatchQueue.main.sync  {
                 if (self.table1 != nil){
@@ -230,9 +253,15 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     //MARK - notfication received for image download
     @objc func receivedImage( notification: Notification){
         if let id = notification.userInfo?["id"] as? String{
-            self.updateImage(  id )
+            self.updateImage(  id , false )
         }
     }
+    @objc func failedImage( notification: Notification){
+        if let id = notification.userInfo?["id"] as? String{
+            self.updateImage(  id , true  )
+        }
+    }
+    
     //Loading indicator management
     func removeLoadingIndicator(){
         DispatchQueue.main.async {
