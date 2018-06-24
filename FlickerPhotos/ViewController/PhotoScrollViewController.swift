@@ -20,6 +20,7 @@ enum SearchProgress{
 
 let cellIdentifier = "kphotoCell"
 let photoCellXib = "PhotoTableViewCell"
+let cellHeight: CGFloat = 100
 
 class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
    
@@ -31,11 +32,9 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     internal var table1photos = [Photo]()
     internal var table2photos = [Photo]()
     internal var table3photos = [Photo]()
-    
     internal var table1photosNoImages = [Photo]()
     internal var table2photosNoImages = [Photo]()
     internal var table3photosNoImages = [Photo]()
-    
     internal weak var delegate: PhotosViewModel? = nil
     internal var activtyInd = UIActivityIndicatorView()
     internal var currSearch = SearchProgress.none
@@ -43,6 +42,10 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     
     private var strongDelegate: PhotosViewModel? = nil
     private var searchText = ""
+    ///Cell IMAGE height width
+    private var rowHeightsT1:[Int:CGFloat] = [:]
+    private var rowHeightsT2:[Int:CGFloat] = [:]
+    private var rowHeightsT3:[Int:CGFloat] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +55,6 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
         self.table3.register(nibCell, forCellReuseIdentifier: cellIdentifier)
         NotificationCenter.default.addObserver(self, selector: #selector(receivedImage(notification:)), name: NSNotification.Name(rawValue:receivedImageNotification) , object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(failedImage(notification:)), name: NSNotification.Name(rawValue:failedImageNotification) , object: nil)
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,53 +84,34 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhotoTableViewCell{
             if(tableView == table1){
-                let photo = table1photos[indexPath.row]
-                cell.textLabel?.text = nil 
-                cell.imageV?.image = photo.imageData
-                if let image = photo.imageData{
-                    print(indexPath.row ," image is present ")
-                    cell.imageV?.image = image
-                }else{
-                    cell.textLabel?.text = photo.title
-                    print(indexPath.row ,   "  image is  NOT present ")
-                    //cell.imageV?.image = nil
-                }
+                self.cellImageContents(indexPath, cell , tableView, table1photos)
             }
             if(tableView == table2){
-                let photo = table2photos[indexPath.row]
-                cell.textLabel?.text = nil
-                cell.imageV?.image = photo.imageData
-                if let image = photo.imageData{
-                    print(indexPath.row ,   "  image is  present ")
-                   cell.imageV?.image = image
-                }else{
-                    cell.textLabel?.text = photo.title
-                    print(indexPath.row ,   "  image is NOT  present ")
-                    //cell.imageV?.image = nil
-                }
+               self.cellImageContents(indexPath, cell , tableView, table2photos)
             }
             if(tableView == table3){
-                let photo = table3photos[indexPath.row]
-                cell.textLabel?.text = nil
-                cell.imageV?.image = photo.imageData
-                if let image = photo.imageData{
-                    print(indexPath.row  ,   " image is  present ")
-                    cell.imageV?.image = image
-                }else{
-                    cell.textLabel?.text = photo.title
-                    print(indexPath.row  ,  " image  is NOT  present ")
-                    if let id = photo.id {
-                        if  let image = Utility.getImageFile(id){
-                            cell.imageV?.image = image
-                        }
-                    }
-                }
+               self.cellImageContents(indexPath, cell , tableView, table3photos)
             }
             return cell
         }else{
             let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: cellIdentifier)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var currRW = [Int:CGFloat] ()
+        if( tableView == self.table1 ){
+            currRW = self.rowHeightsT1
+        }else if( tableView == self.table2){
+            currRW =  self.rowHeightsT2
+        }else if( tableView == self.table3){
+            currRW = self.rowHeightsT3
+        }
+        if let height = currRW[indexPath.row] {
+            return height
+        }
+        return cellHeight
     }
     
     internal func updateImage( _ id: String , _ downloadFailed: Bool  ){
@@ -274,4 +256,35 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
         }
         self.currSearch = .none
     }
+    
+    private func cellImageContents(_ indexP: IndexPath, _ cell: PhotoTableViewCell, _ table: UITableView, _ tablePhotos: [Photo]) {
+        let photo = tablePhotos[indexP.row]
+        cell.textLabel?.text = nil
+        cell.imageV?.image = photo.imageData
+        if let image = photo.imageData{
+            print(indexP.row ," image is present ")
+            cell.imageV?.image = image
+            cell.textLabel?.text = nil
+        }else{
+            cell.textLabel?.text = photo.title
+            print(indexP.row ,   "  image is  NOT present ")
+            //cell.imageV?.image = nil
+        }
+        
+                if let image = photo.imageData{
+                    DispatchQueue.main.async {
+                        cell.imageV.image = image
+                        let aspectRatio = (image as UIImage).size.height/(image as UIImage).size.width
+                        let imageHeight = cell.frame.width*aspectRatio
+                        if( table == self.table1 ){
+                        self.rowHeightsT1[indexP.row] = imageHeight
+                        }else if( table == self.table2){
+                            self.rowHeightsT2[indexP.row] = imageHeight
+                        }else {
+                            self.rowHeightsT3[indexP.row] = imageHeight
+                        }
+                    }
+                }
+    }
+          
 }

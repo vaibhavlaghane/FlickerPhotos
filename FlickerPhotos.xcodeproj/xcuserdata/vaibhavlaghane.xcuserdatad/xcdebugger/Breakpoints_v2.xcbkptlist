@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.610405"
+            timestampString = "551520404.850093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "updateImage(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.610556"
+            timestampString = "551520404.850731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "updateImage(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.610633"
+            timestampString = "551520404.851176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "updateImage(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.610707"
+            timestampString = "551520404.851612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "receivedImage(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.6107889"
+            timestampString = "551520404.8520499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
             landmarkName = "failedImage(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/Network/ImageDownloader.swift"
-            timestampString = "551517585.610863"
+            timestampString = "551520404.852483"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/Network/ImageDownloader.swift"
-            timestampString = "551517585.610929"
+            timestampString = "551520404.852564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/Network/ImageDownloader.swift"
-            timestampString = "551517585.6109869"
+            timestampString = "551520404.85264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -138,27 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611048"
+            timestampString = "551520404.852717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "appendData(_:_:_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611114"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "appendData(_:_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.6111799"
+            timestampString = "551520404.8530411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "appendData(_:_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611246"
+            timestampString = "551520404.853341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,157 +186,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611356"
+            timestampString = "551520404.853683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "cellImageContents(_:_:_:_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.6114269"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611495"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611559"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611624"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611753"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.6118259"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611892"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FlickerPhotos/ViewController/PhotoScrollViewController.swift"
-            timestampString = "551517585.611956"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FlickerPhotos.PhotoScrollViewController.(adjustCellHeightPerImage in _D30C96470C36F553AF5FE96DBF9B0821)(Foundation.IndexPath, FlickerPhotos.PhotoTableViewCell, __ObjC.UITableView, Swift.Array&lt;FlickerPhotos.Photo&gt;) -&gt; ()"
+                  moduleName = "FlickerPhotos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vaibhavlaghane/Documents/GitHub/UberTest/FlickerPhotos/FlickerPhotos/ViewController/PhotoScrollViewController.swift"
+                  timestampString = "551519020.373356"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "307"
+                  endingLineNumber = "307"
+                  offsetFromSymbolStart = "2292">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in FlickerPhotos.PhotoScrollViewController.(adjustCellHeightPerImage in _D30C96470C36F553AF5FE96DBF9B0821)(Foundation.IndexPath, FlickerPhotos.PhotoTableViewCell, __ObjC.UITableView, Swift.Array&lt;FlickerPhotos.Photo&gt;) -&gt; ()"
+                  moduleName = "FlickerPhotos"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vaibhavlaghane/Documents/GitHub/UberTest/FlickerPhotos/FlickerPhotos/ViewController/PhotoScrollViewController.swift"
+                  timestampString = "551519020.3766069"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "308"
+                  endingLineNumber = "308"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
