@@ -42,6 +42,7 @@ class PhotosViewModel: NSObject, PhotoSearchDelegate {
             self.pageNumber = 1 //restart the page number
             newText = true
         }
+        vc.loadingIndicator()
         netOp.downloadData(pageNumber: self.pageNumber, pageSize: self.pageSize, searchText: text) {  (photos) in
             self.pageNumber = (self.pageNumber) + (self.pageSize)  ;
             guard let currPhotoList = photos  else {

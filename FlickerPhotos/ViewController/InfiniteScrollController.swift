@@ -20,13 +20,11 @@ extension PhotoScrollViewController{
                 self.addLoadingIndicator()
             }
         }
-       
     }
     
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
             self.scrollReachedBottom = true
-            //print("Reached Bottom ")
         }
         if (scrollView.contentOffset.y <= 0){
         }
@@ -40,7 +38,7 @@ extension PhotoScrollViewController{
             let bottomX = self.view.bounds.size.width
             let bottomY = self.view.bounds.size.height
             self.activtyInd = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            self.activtyInd.frame = CGRect(x: bottomX/2 , y: bottomY - 50, width: 50, height: 50)
+            self.activtyInd.frame = CGRect(x: bottomX/2  - 25 , y: bottomY - 50, width: 50, height: 50)
             self.activtyInd.backgroundColor = UIColor.white
             DispatchQueue.main.async {
                 self.activtyInd.startAnimating()

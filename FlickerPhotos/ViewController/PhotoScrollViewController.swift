@@ -55,6 +55,8 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
         self.table3.register(nibCell, forCellReuseIdentifier: cellIdentifier)
         NotificationCenter.default.addObserver(self, selector: #selector(receivedImage(notification:)), name: NSNotification.Name(rawValue:receivedImageNotification) , object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(failedImage(notification:)), name: NSNotification.Name(rawValue:failedImageNotification) , object: nil)
+        
+        self.addIndicatorView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -182,7 +184,6 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     
     internal func appendData(_ d1: [Photo], _ d2: [Photo], _ d3: [Photo], _ isNewText: Bool ){
         self.currSearch = .none
-        removeLoadingIndicator()
         if (d1.count == 0 && d2.count == 0 && d3.count == 0){return}
         if(isNewText){
             DispatchQueue.main.sync  {
@@ -244,6 +245,7 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func receivedImage( notification: Notification){
         if let id = notification.userInfo?["id"] as? String{
             self.updateImage(  id , false )
+            self.removeLoadingIndicator()
         }
     }
     @objc func failedImage( notification: Notification){
@@ -264,6 +266,29 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
         }
         self.currSearch = .none
     }
+    
+    //for the initial load indicator of the photos download 
+    private func addIndicatorView(){
+        let bottomX = self.view.bounds.size.width
+        let bottomY = self.view.bounds.size.height
+        self.activtyInd = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        self.activtyInd.frame = CGRect(x: bottomX/2 - 25  , y: bottomY/2 + 100 , width: 50, height: 50)
+        self.activtyInd.backgroundColor = UIColor.white
+        self.view.addSubview(self.activtyInd)
+        
+    }
+    
+    //MARK - activity indicator for infinite search
+    public func loadingIndicator(){
+        if(self.currSearch == .none ){
+            DispatchQueue.main.async {
+                self.activtyInd.startAnimating()
+            }
+            self.view.bringSubview(toFront: self.activtyInd)
+        }
+    }
+    
+
     
     //update thec with the image
     private func cellImageContents(_ indexP: IndexPath, _ cell: PhotoTableViewCell, _ table: UITableView, _ tablePhotos: [Photo]) {
