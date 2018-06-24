@@ -43,20 +43,23 @@ class PhotosViewModel: NSObject, PhotoSearchDelegate {
             newText = true
         }
         vc.loadingIndicator()
-        netOp.downloadData(pageNumber: self.pageNumber, pageSize: self.pageSize, searchText: text) {  (photos) in
-            self.pageNumber = (self.pageNumber) + (self.pageSize)  ;
+        netOp.downloadData(pageNumber: self.pageNumber, pageSize: self.pageSize, searchText: text) {  [ weak self ] (photos) in
+            self?.pageNumber = (self?.pageNumber)! + (self?.pageSize)!  ;
             guard let currPhotoList = photos  else {
+                self?.vc.removeLoadingIndicator()
                 // error message that data is empty
-                Utility.showAlertMessageVC(self.vc, "Error while downloading the content. Retrieved Empty Data", withTitle: "Download Error", onClick: {
-                    self.supplyDataToScrollView([], newText )
+                Utility.showAlertMessageVC((self?.vc)!, "Error while downloading the content. Retrieved Empty Data", withTitle: "Download Error", onClick: {
+                    
+                    self?.supplyDataToScrollView([], newText )
                 })
                 return
             }
             if(currPhotoList.count != 0){
-                self.supplyDataToScrollView(currPhotoList, newText )
+                self?.supplyDataToScrollView(currPhotoList, newText )
             }else{
-                Utility.showAlertMessageVC(self.vc ,"Error while downloading the images. Retrieved Empty Data", withTitle: "Download Error", onClick: {
-                    self.supplyDataToScrollView([], newText )
+                self?.vc.removeLoadingIndicator()
+                Utility.showAlertMessageVC((self?.vc)! ,"Error while downloading the images. Retrieved Empty Data", withTitle: "Download Error", onClick: {
+                    self?.supplyDataToScrollView([], newText )
                 })
             }
         }

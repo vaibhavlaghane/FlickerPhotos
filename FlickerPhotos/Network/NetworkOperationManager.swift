@@ -33,12 +33,12 @@ class NetworkOperationManager: NSObject {
     ///   - pageSize: size of page
     ///   - completion: completion block 
     func downloadData( pageNumber: Int,pageSize: Int, searchText: String  ,  completion: @escaping ([Photo]? ) -> Void )->Void{
-        downloader.getJSONData(pageNumber: pageNumber, pageSize: pageSize, searchText:  searchText, completion: { (dict) in
+        downloader.getJSONData(pageNumber: pageNumber, pageSize: pageSize, searchText:  searchText, completion: {  [weak self ] (dict) in
             let pList = Utility.parseJSON(dict: dict)
-            self.photos.append(contentsOf:pList  )
+            self?.photos.append(contentsOf:pList  )
             completion(pList)
-            for (index, element) in self.photos.enumerated(){
-                self.startDownloadPhotoImage(photo: element, index: index)
+            for (index, element) in (self?.photos.enumerated())!{
+                self?.startDownloadPhotoImage(photo: element, index: index)
             }
         }) { (response, error) in   //
             Utility.showAlertMessage("Failed to Download the Content", withTitle: "Download Update", onClick: {
