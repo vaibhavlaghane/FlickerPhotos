@@ -33,9 +33,7 @@ NetworkOperationManager - invokes datadownloader for json data download
 - starts image download
 
 ToDo -
-- placeholder image/ animation effect when image is to be downloaded in the cell
-- processing the image to adjust height and width in the cell/ cell size can change according to resolution of the image
 - cacheManager - recycle the image folder - for deletion of old images, when image size grows to more than a limit
 - rearrange the cells[images] where the image download has failed[instead of showing them to the user ]
-
+- placeholder image/ animation effect when image is to be downloaded in the cell
 

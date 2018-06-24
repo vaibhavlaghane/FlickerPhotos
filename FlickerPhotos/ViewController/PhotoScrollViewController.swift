@@ -32,9 +32,9 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     internal var table1photos = [Photo]()
     internal var table2photos = [Photo]()
     internal var table3photos = [Photo]()
-    internal var table1photosNoImages = [Photo]()
-    internal var table2photosNoImages = [Photo]()
-    internal var table3photosNoImages = [Photo]()
+    internal var table1Images = [Photo]()
+    internal var table2Images = [Photo]()
+    internal var table3Images = [Photo]()
     internal weak var delegate: PhotosViewModel? = nil
     internal var activtyInd = UIActivityIndicatorView()
     internal var currSearch = SearchProgress.none
@@ -70,13 +70,13 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(tableView == table1){
-            return table1photos.count
+            return table1Images.count
         }
         if(tableView == table2){
-            return table2photos.count
+            return table2Images.count
         }
         if(tableView == table3){
-            return table3photos.count
+            return table3Images.count
         }
         return 1
     }
@@ -84,13 +84,13 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PhotoTableViewCell{
             if(tableView == table1){
-                self.cellImageContents(indexPath, cell , tableView, table1photos)
+                self.cellImageContents(indexPath, cell , tableView, table1Images)
             }
             if(tableView == table2){
-               self.cellImageContents(indexPath, cell , tableView, table2photos)
+               self.cellImageContents(indexPath, cell , tableView, table2Images)
             }
             if(tableView == table3){
-               self.cellImageContents(indexPath, cell , tableView, table3photos)
+               self.cellImageContents(indexPath, cell , tableView, table3Images)
             }
             return cell
         }else{
@@ -116,17 +116,20 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
     
     internal func updateImage( _ id: String , _ downloadFailed: Bool  ){
         if (self.table1photos.count != 0 ){
-            for (i, element ) in self.table1photos.enumerated(){
+            for (_ , element ) in self.table1photos.enumerated(){
                 if( element.id == id ){
                     DispatchQueue.main.async {
                         if (self.table1 != nil){
-                            let indexPath =  IndexPath(row: i, section: 0)
-                            if(downloadFailed){
-                                self.table1photos.remove(at: i )
-                                self.table1.reloadData()
-                            }else{
-                            self.table1.reloadRows(at: [indexPath], with: .top)
+                            var photoAlreadyPresent = false
+                            for ( _ , pic) in self.table1Images.enumerated(){
+                                if(pic == element ){
+                                    photoAlreadyPresent = true
+                                    break }
                             }
+                            if(!photoAlreadyPresent){
+                                self.table1Images.append(element)
+                            }
+                            self.table1.reloadData()
                         }
                     }
                 return
@@ -134,12 +137,20 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         if(self.table2photos.count  != 0){
-            for (i, element ) in self.table2photos.enumerated(){
+            for ( _ , element ) in self.table2photos.enumerated(){
                 if( element.id == id ){
                     DispatchQueue.main.async {
                         if (self.table2 != nil){
-                            let indexPath =  IndexPath(row: i, section: 0)
-                            self.table2.reloadRows(at: [indexPath], with: .top)
+                            var photoAlreadyPresent = false
+                            for ( _ , pic) in self.table2Images.enumerated(){
+                                if(pic == element ){
+                                    photoAlreadyPresent = true
+                                    break }
+                            }
+                            if(!photoAlreadyPresent){
+                                self.table2Images.append(element)
+                            }
+                            self.table2.reloadData()
                         }
                     }
                 return
@@ -147,12 +158,20 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         if(self.table3photos.count  != 0 ){
-            for (i, element ) in self.table3photos.enumerated(){
+            for ( _ , element ) in self.table3photos.enumerated(){
                 if( element.id == id ){
                     DispatchQueue.main.async {
                         if (self.table3 != nil){
-                            let indexPath =  IndexPath(row: i, section: 0)
-                            self.table3.reloadRows(at: [indexPath], with: .top)
+                            var photoAlreadyPresent = false
+                            for ( _ , pic) in self.table3Images.enumerated(){
+                                if(pic == element ){
+                                    photoAlreadyPresent = true
+                                    break }
+                            }
+                            if(!photoAlreadyPresent){
+                                self.table3Images.append(element)
+                            }
+                            self.table3.reloadData()
                         }
                     }
                 return 
@@ -169,41 +188,30 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
             DispatchQueue.main.sync  {
                 if (self.table1 != nil){
                     self.table1photos.removeAll()
+                    self.table1Images.removeAll()
                     self.table1.reloadData()
                 }
                 if(self.table2 != nil ){
                     self.table2photos.removeAll()
+                    self.table2Images.removeAll()
                     self.table2.reloadData()
                 }
                 if(self.table3 != nil ){
                     self.table3photos.removeAll()
+                    self.table3Images.removeAll()
                     self.table3.reloadData()
                 }
             }
         }
         if(d1.count != 0){
             self.table1photos.append(contentsOf: d1 )
-            DispatchQueue.main.async {
-                if (self.table1 != nil){
-                self.table1.reloadData()
-                }
-            }
         }
         if(d2.count != 0){
             self.table2photos.append(contentsOf: d2 )
-            DispatchQueue.main.async {
-                if(self.table2 != nil ){
-                self.table2.reloadData()
-                }
-            }
         }
         if(d3.count != 0){
             self.table3photos.append(contentsOf: d3 )
-            DispatchQueue.main.async {
-                if(self.table3 != nil ){
-                self.table3.reloadData()
-                }
-            }
+
         }
     }
     //MARK - search Bar delegate
@@ -257,25 +265,26 @@ class PhotoScrollViewController: UIViewController, UITableViewDelegate, UITableV
         self.currSearch = .none
     }
     
+    //update thec with the image
     private func cellImageContents(_ indexP: IndexPath, _ cell: PhotoTableViewCell, _ table: UITableView, _ tablePhotos: [Photo]) {
         let photo = tablePhotos[indexP.row]
         cell.textLabel?.text = nil
         cell.imageV?.image = photo.imageData
         if let image = photo.imageData{
-            print(indexP.row ," image is present ")
             cell.imageV?.image = image
             cell.textLabel?.text = nil
         }else{
             cell.textLabel?.text = photo.title
-            print(indexP.row ,   "  image is  NOT present ")
-            //cell.imageV?.image = nil
         }
         
                 if let image = photo.imageData{
                     DispatchQueue.main.async {
                         cell.imageV.image = image
                         let aspectRatio = (image as UIImage).size.height/(image as UIImage).size.width
-                        let imageHeight = cell.frame.width*aspectRatio
+                        var  imageHeight = cell.frame.width*aspectRatio
+                        if (image as UIImage).size.width < cell.frame.width {
+                            imageHeight = (image as UIImage).size.height
+                        }
                         if( table == self.table1 ){
                         self.rowHeightsT1[indexP.row] = imageHeight
                         }else if( table == self.table2){
