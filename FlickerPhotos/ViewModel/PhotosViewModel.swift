@@ -46,7 +46,7 @@ class PhotosViewModel: NSObject, PhotoSearchDelegate {
             self.pageNumber = (self.pageNumber) + (self.pageSize)  ;
             guard let currPhotoList = photos  else {
                 // error message that data is empty
-                Utility.showAlertMessageVC(self.vc, "Retrieved Empty Data", withTitle: "Download Error", onClick: {
+                Utility.showAlertMessageVC(self.vc, "Error while downloading the content. Retrieved Empty Data", withTitle: "Download Error", onClick: {
                     self.supplyDataToScrollView([], newText )
                 })
                 return
@@ -54,7 +54,7 @@ class PhotosViewModel: NSObject, PhotoSearchDelegate {
             if(currPhotoList.count != 0){
                 self.supplyDataToScrollView(currPhotoList, newText )
             }else{
-                Utility.showAlertMessageVC(self.vc ,"Retrieved Empty Data", withTitle: "Download Error", onClick: {
+                Utility.showAlertMessageVC(self.vc ,"Error while downloading the images. Retrieved Empty Data", withTitle: "Download Error", onClick: {
                     self.supplyDataToScrollView([], newText )
                 })
             }

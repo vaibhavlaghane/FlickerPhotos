@@ -20,7 +20,7 @@ extension PhotoScrollViewController{
                 self.addLoadingIndicator()
             }
         }
-       // print("scrollViewDidEndDecelerating")
+       
     }
     
      func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -34,23 +34,8 @@ extension PhotoScrollViewController{
         }
     }
     
-     func scrollViewDidChangeAdjustedContentInset(_ scrollView: UIScrollView) {
-        //print("scrollViewDidChangeAdjustedContentInset")
-    }
-    
-     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-      //    print("scrollViewDidEndDragging")
-    }
-    
-     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-      //    print("scrollViewDidEndScrollingAnimation")
-    }
-    
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-    }
-    
     //MARK - activity indicator for infinite search
-    internal func addLoadingIndicator(){
+    public func addLoadingIndicator(){
         if(self.currSearch == .none ){
             let bottomX = self.view.bounds.size.width
             let bottomY = self.view.bounds.size.height

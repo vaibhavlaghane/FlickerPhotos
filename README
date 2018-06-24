@@ -1,5 +1,5 @@
 The Project FlickerPhotos is designed to search and download photos from the FlickerAPI.
-It follows the MVVM model where "PhotosViewModel" forms the main ViewModel class. It contains "PhotoScrollViewController"- the controller to load the view for the images, the searchbar and the loading indicator[when scrolled up to get data till i exhausts[ like inifinite data download ]].
+It follows the MVVM model where "PhotosViewModel" forms the main ViewModel class. It contains "PhotoScrollViewController"- the controller to load the view for the images, the searchbar and the loading indicator[when scrolled up to get data till it exhausts[ like inifinite data download ]].
 Notification mechanism is used to let the controller know that the image is downloaded.
 
 ViewModel  - PhotosViewModel
@@ -13,7 +13,7 @@ Controller - PhotoScrollViewController
 - when user scrolls all the way to bottom , the query is launched again to download more images for the current searched text
 - protocol PhotoSearchDelegate - defines the method to be implemented by the ViewModel when the text is searched in the searchbar
 
-Cell - PhotoTableViewCell - cell containing the image
+PhotoTableViewCell - cell containing the image
 
 InfiniteScroll - InfiniteScrollController
 - extension of PhotoScrollViewController for catching the scroll events.
@@ -34,6 +34,5 @@ NetworkOperationManager - invokes datadownloader for json data download
 
 ToDo -
 - cacheManager - recycle the image folder - for deletion of old images, when image size grows to more than a limit
-- rearrange the cells[images] where the image download has failed[instead of showing them to the user ]
-- placeholder image/ animation effect when image is to be downloaded in the cell
+- placeholder image/ animation effect when image is to be downloaded in the cell - for a smoother image load transition
 
